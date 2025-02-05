@@ -47,7 +47,7 @@ fastify.get("/r/:target/:hash?", (request: FastifyRequest, reply: FastifyReply):
     const params = request.params as { target: string, hash: string | undefined };
     const targetUrl: string | undefined = routes[params.target];
     if (targetUrl) {
-        return reply.status(301).redirect(targetUrl + (params.hash ? `#${params.hash}` : ""));
+        return reply.status(302).redirect(targetUrl + (params.hash ? `#${params.hash}` : ""));
     } else return reply.status(404).send("Route not found.");
 });
 
